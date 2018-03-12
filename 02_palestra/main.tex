@@ -1,0 +1,250 @@
+%% abtex2-modelo-artigo.tex, v-1.9.6 laurocesar
+%% Copyright 2012-2016 by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-artigo.tex and
+%% abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Artigo Acadêmico em conformidade com
+% ABNT NBR 6022:2003: Informação e documentação - Artigo em publicação 
+% periódica científica impressa - Apresentação
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+    % -- opções da classe memoir --
+    article,            % indica que é um artigo acadêmico
+    11pt,               % tamanho da fonte
+    oneside,            % para impressão apenas no recto. Oposto a twoside
+    a4paper,            % tamanho do papel. 
+    % -- opções da classe abntex2 --
+    %chapter=TITLE,     % títulos de capítulos convertidos em letras maiúsculas
+    %section=TITLE,     % títulos de seções convertidos em letras maiúsculas
+    %subsection=TITLE,  % títulos de subseções convertidos em letras maiúsculas
+    %subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
+    % -- opções do pacote babel --
+    english,            % idioma adicional para hifenização
+    brazil,             % o último idioma é o principal do documento
+    sumario=tradicional,
+    ]{abntex2}
+
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{lmodern}            % Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}        % Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}     % Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}        % Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl}            % Lista de simbolos
+\usepackage{color}              % Controle das cores
+\usepackage{graphicx}           % Inclusão de gráficos
+\usepackage{microtype}          % para melhorias de justificação
+% ---
+        
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}             % para geração de dummy text
+% ---
+        
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}     % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}   % Citações padrão ABNT
+% ---
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+    \ifcase #1 %
+        Nenhuma citação no texto.%
+    \or
+        Citado na página #2.%
+    \else
+        Citado #1 vezes nas páginas #2.%
+    \fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Exercício INE5418 - Computação Distribuída\\ 
+        Gerações de Sistemas Distribuídos}
+\autor{Bruno Marques do Nascimento\thanks{brunomn95@gmail.com \hspace{1mm} - \hspace{1mm} Universidade Federal de Santa Catarina}}
+\instituicao{Universidade Federal de Santa Catarina}
+\local{Florianópolis - SC, Brasil}
+\data{12 de Março de 2018}
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+        %pagebackref=true,
+        pdftitle={\@title}, 
+        pdfauthor={\@author},
+        pdfsubject={Modelo de artigo científico com abnTeX2},
+        pdfcreator={LaTeX with abnTeX2},
+        pdfkeywords={abnt}{latex}{abntex}{abntex2}{atigo científico}, 
+        colorlinks=true,            % false: boxed links; true: colored links
+        linkcolor=blue,             % color of internal links
+        citecolor=blue,             % color of links to bibliography
+        filecolor=magenta,              % color of file links
+        urlcolor=blue,
+        bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ---
+% Altera as margens padrões
+% ---
+\setlrmarginsandblock{3cm}{3cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+% ---
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% Espaçamento simples
+\SingleSpacing
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+
+%---
+%
+% Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
+% e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
+% \twocolumn[           % INICIO DE ARTIGO EM DUAS COLUNAS
+%
+%---
+% página de titulo
+
+\maketitle
+
+
+% resumo em português
+\begin{resumoumacoluna}
+    Documento referente ao primeiro exercício individual da disciplina INE5418 - Computação Distribuída, com o objetivo de fixar as diferentes gerações de sistemas distribuídos. O objetivo é responder as perguntas elencadas pela professoa ministrante da disciplina Patrícia Della Méa Plentz na plataforma moodle.
+ 
+ \vspace{\onelineskip}
+ 
+\end{resumoumacoluna}
+
+% ]                 % FIM DE ARTIGO EM DUAS COLUNAS
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ----------------------------------------------------------
+% Introdução
+% ----------------------------------------------------------
+% \section*{Introdução}
+% \addcontentsline{toc}{section}{Introdução}
+
+
+% ----------------------------------------------------------
+% Questão 1
+% ----------------------------------------------------------
+\section{Caracterize as três gerações de Sistemas Distribuídos de acordo com o texto do livro base da disciplina. Informe no mínimo três características de cada geração.}
+
+As primeiras gerações sistemas distribuídos surgiram no final da década de 1970 e início da década de 1980, estes sistemas consistiam de uma rede de computadores que não passava de 100 dispositivos conectados em uma rede local. Algumas características destes sistemas eram suas limitações de conectividade, pequena gama de serviços como impressoras locais, servidores de arquivos e email. Além disso, estes sistemas eram extremamente homogêneos limitando sua capacidade receptiva de novos dispositivos na rede.
+
+A segunda geração, também conhecida como sistemas distribuídos em escala de internet emergiu durante a década de 1990, fortemente influenciada pela rápida propagação do uso da internet. Sua principal mudança foi a "libertação" da rede local, contituindo-se agora de uma rede de nós interligados entre si e interligados a outras redes através da internet. Eles exploraram a infraestrutura da internet afim de alcançar presença global. Outra forte caraterística dessa geração é a heterogeneidade dos sistemas, onde cada um destes sistemas poderia manter um sistema operacional, uma linguagem de programação diferentes, etc. Isto acarretou na necessidade de criação de padrões a serem seguidos pelos sistemas, com o objetivao de melhorar a qualidade de serviço entres eles. Com esta disposição estes sistemas eram responsáveis em prover serviços a organizações globais, assim como entre entre organizações.
+
+Os sistemas distribuídos contemporâneos são a terceira geração, surgiram do processo natural e esperado que é a evoluçã a partir da segunda geração propriamente influenciada pelo advento de novas tecnologias tanto em software como em hardware. A grande mudança consiste de inserir nestes sistemas outros dispositivos além dos desktops há muito utilizados porém sem flexibilidade de locomoção e restritos a um determinado ambiente. A inserção de nós móveis como \textit{smart phones} e \textit{laptops}, resultou na necessidade de novas capacidades do sistema, como a descoberta de serviços e suporte para a interoperabilidade entre estes dispositivos. Além dos dispositivos móveis já citados, com a onipresença da computação e tecnologia os nós destes sistemas passaram a receber também dispositivos do dia-a-dia, tornando os nós antes discretos em uma arquitetura composta pelos mais variados dispositivos. Outro importante ponto é a computação em nuvem, que permitiu que um serviço antes oferecido por um nó único, pode agora ser paralelizado em um grupo de nós oferecendo maior escalabilidade e eficiência neste mesmo serviço. Com isso, a estrutura física desta geração é o resultado do enorme crescimento e introdução de novos dispositivos no sistema, elevando ainda mais a heterogeneidade já presente na segunda geração e sua abrangência física tendendo a onipresença.
+
+
+% ---
+% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+% ---
+\bookmarksetup{startatroot}% 
+% ---
+
+% ---
+% Conclusão
+% ---
+% \section*{Considerações finais}
+% \addcontentsline{toc}{section}{Considerações finais}
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\vspace{\onelineskip}
+\vspace{\onelineskip}
+\vspace{\onelineskip}
+\vspace{\onelineskip}
+\vspace{\onelineskip}
+
+\nocite{Coulouris:2011:DSC:2029110}
+\bibliography{bibliography}
+
+\end{document}
