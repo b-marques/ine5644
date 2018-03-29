@@ -1,0 +1,47 @@
+% ----------------------------------------------------------
+% Enunciado:
+% ----------------------------------------------------------
+
+A tarefa é estudar o algoritmo de clustering hierárquico mim (também chamado de single link).
+
+Podem usar o material da aula ou procurar vídeos explicativos ou artigos ou o próprio livro da bibliografia básica da disciplina. 
+
+IMPORTANTE: não esquecer de citar a fonte de estudo
+
+Uma vez estudado o clustering hierárquico, responder as perguntas abaixo:
+
+1) Qual a principal diferença do clustering hierárquico min para o k-means
+
+2) No k-means os agrupamentos são formados pela distância dos elementos ao centróide, cada elemento é adicionado ao grupo do centróide mais próximo, e todos os elementos são reagrupados a cada passo do algoritmo. Como funciona o agrupamento a cada passo no clustering hierárquico min?
+
+3) Quais são as vantagens do clustering hierárquico em relação ao k-means?
+
+4) Dado um conjunto de 5 elementos A, B, C, D e E, como será feito o cálculo da similaridade dos elementos e o seu agrupamento?
+
+
+% ----------------------------------------------------------
+% Respostas:
+% ----------------------------------------------------------
+
+1)  A principal diferença é a maneira como ele estrutura os clusters gerados. Diferente do k-means o clustering hierárquico gera uma estrutura de árvore de clusters que pode ser representado por um dendograma. Essa maneira de construção/representação permite o controle do histórico de alterações ocorridas nos clusters.
+
+ 
+
+2) No clustering herárquico min utilizando o algoritmo aglomerativo, tem se inicialmente cada elemento como um cluster, após isto é verificado através da tabela de similaridade os clusters com maior similaridade, os cluster selecionados são então unidos em um único cluster e passam a ser representado por esta união. As similaridades são recalculadas e o processo de encontrar outros dois cluster com a maior similaridade é realizado novamente, este processo se repete até se ter apenas um cluster único que engloba todos os elementos.
+
+ 
+
+3) Uma das vantagens é a não necessidade de se assumir um número particular de clusters. Isso ocorre devido a maneira como o algoritmo é estruturado, possibilitando ao usuário escolher através de um "corte" no dendograma gerando o número de clusters almejado. Outra vantagem é a sua similaridade com a estrutura taxonômica, facilitando seu uso em determinadas áreas, como a taxonomia do reino animal.
+
+ 
+
+4) Dado um conjunto de cinco elementos A,B,C,D e E, o cálculo de similaridade será baseado no tipo de elemento a ser tratado, um exemplo de similaridade seria a distância euclidiana ou distância entre as letras no alfabeto, neste caso quanto menor a distância maior a similaridade. Após definidas as similaridades, para gerar os agrupamento é necessário verificar quais elementos possuem maior similaridade e agrupá-los em um único, após agrupá-los recalcular as similaridades e assim sucessivamente até existir apenas um agrupamento com todos os elementos.
+
+ 
+
+Bibliografia:
+
+Slides de aula - Disponível em: http://www.inf.ufsc.br/~vania/teaching/INE5644/clustering2.ppt
+Hierarchical agglomerative clustering - Disponível em: https://nlp.stanford.edu/IR-book/html/htmledition/hierarchical-agglomerative-clustering-1.html
+
+ 
