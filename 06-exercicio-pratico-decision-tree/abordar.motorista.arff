@@ -1,0 +1,26 @@
+@RELATION abordar.motorista
+
+@ATTRIBUTE UsandoTelefone {Sim,Não}
+@ATTRIBUTE Luzes {Funcionando, Queimadas}
+@ATTRIBUTE Velocidade {Lenta,Rápida,Normal}
+@ATTRIBUTE Direcao {Arriscada,Perigosa,Segura}
+@ATTRIBUTE Abordar {Sim,Não}
+
+@DATA
+Sim Funcionando Lenta Arriscada Não
+Não Queimadas Rápida Perigosa Sim
+Não Queimadas Lenta Segura Sim
+Não Funcionando Rápida Arriscada Não
+Sim Funcionando Normal Perigosa Não
+Sim Funcionando Rápida Perigosa Sim
+Não Queimadas Lenta Segura Sim
+Sim Queimadas Rápida Arriscada Sim
+Não Funcionando Normal Segura Não
+Sim Queimadas Normal Arriscada Sim
+Sim Queimadas Lenta Arriscada Sim
+Não Funcionando Lenta Segura Não
+Não Queimadas Lenta Arriscada Sim
+Sim Funcionando Normal Segura Não
+Não Funcionando Normal Arriscada Não
+Não Funcionando Lenta Perigosa Sim
+Não Funcionando Rápida Segura Não

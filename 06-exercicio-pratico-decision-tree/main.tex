@@ -200,17 +200,17 @@
 % \addcontentsline{toc}{section}{Introdução}
 
 \section*{\textbf{Respostas:}}
-\addcontentsline{toc}{section}{Questões e respostas:}
+\addcontentsline{toc}{section}{Respostas:}
 
 
 % ----------------------------------------------------------
 % Questão 2
 % ----------------------------------------------------------
 \subsection*{\textbf{Exercício 2:}}
-\addcontentsline{toc}{subsection}{Exercício 3}
+\addcontentsline{toc}{subsection}{Exercício 2}
 
-\begin{itemize}
-    \item \textbf{ID3:}
+\subsubsection*{\textbf{ID3:}}
+\addcontentsline{toc}{subsubsection}{ID3}
     \begin{itemize}
         \item Tempo de construção: \textbf{0 segundos.}
         \item Características:
@@ -283,8 +283,8 @@ Weighted Avg.    0,813    0,188    0,864      0,813    0,806      0,674    0,813
  0 8 | b = Nao
 \end{Verbatim}
 
-
-    \item \textbf{J48 - Unpruned:}
+\subsubsection*{\textbf{J48 - Unpruned:}}
+\addcontentsline{toc}{subsubsection}{J48 - Unpruned}
     \begin{itemize}
         \item Tempo de construção: \textbf{0 segundos.}
         \item Características:
@@ -359,17 +359,556 @@ Weighted Avg.    0,938    0,063    0,944      0,938    0,937      0,882    0,898
  0 8 | b = Nao
 \end{Verbatim}
 
-\begin{minipage}{\linewidth}
-    \centering
     \begin{figure}[H]
         \label{j48-decision-tree}
         \caption{Árvore de decisão - J48}
         \includegraphics[width=\textwidth]{imgs/exer2-j48-tree.pdf}
     \end{figure}
-\end{minipage}
 
-\end{itemize}
 
+% ----------------------------------------------------------
+% Questão 3
+% ----------------------------------------------------------
+\subsection*{\textbf{Exercício 3:}}
+\addcontentsline{toc}{subsection}{Exercício 3}
+
+\subsubsection*{\textbf{ID3:}}
+\addcontentsline{toc}{subsubsection}{ID3}
+    \begin{itemize}
+        \item Tempo de construção: \textbf{0 segundos.}
+        \item Características:
+        \begin{itemize}
+            \item Altura: 3
+            \item Nodos por nível:
+                \begin{itemize}
+                    \item Nível 1: \textbf{1 nodo.}
+                    \item Nível 2: \textbf{2 nodos.}
+                    \item Nível 3: \textbf{3 nodos.}
+                    \item Nível 4: \textbf{3 nodos.}
+                \end{itemize}
+        \end{itemize}
+        \item ``Output Weka'' do algoritmo:
+    \end{itemize}   
+
+\begin{Verbatim}[frame=single, fontsize=\tiny]
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.Id3 
+Relation:     abordar.motorista
+Instances:    17
+Attributes:   5
+              UsandoTelefone
+              Luzes
+              Velocidade
+              Direcao
+              Abordar
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Id3
+
+
+Luzes = Funcionando
+|  Direcao = Arriscada: Não
+|  Direcao = Perigosa
+|  |  Velocidade = Lenta: Sim
+|  |  Velocidade = Rápida: Sim
+|  |  Velocidade = Normal: Não
+|  Direcao = Segura: Não
+Luzes = Queimadas: Sim
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances          15               88.2353 %
+Incorrectly Classified Instances         2               11.7647 %
+Kappa statistic                          0.7639
+Mean absolute error                      0.1176
+Root mean squared error                  0.343 
+Relative absolute error                 23.3766 %
+Root relative squared error             68.0355 %
+Total Number of Instances               17     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,889    0,125    0,889      0,889    0,889      0,764    0,882     0,849     Sim
+                 0,875    0,111    0,875      0,875    0,875      0,764    0,882     0,824     Não
+Weighted Avg.    0,882    0,118    0,882      0,882    0,882      0,764    0,882     0,837     
+
+=== Confusion Matrix ===
+
+ a b   <-- classified as
+ 8 1 | a = Sim
+ 1 7 | b = Não
+\end{Verbatim}
+
+
+\subsubsection*{\textbf{J48 - Unpruned:}}
+\addcontentsline{toc}{subsubsection}{J48 - Unpruned}
+
+    \begin{itemize}
+        \item Tempo de construção: \textbf{0.01 segundos.}
+        \item Características:
+        \begin{itemize}
+            \item Altura: 2
+            \item Nodos por nível:
+                \begin{itemize}
+                    \item Nível 1: \textbf{1 nodo.}
+                    \item Nível 2: \textbf{2 nodos.}
+                    \item Nível 3: \textbf{3 nodos.}
+                \end{itemize}
+        \end{itemize}
+        \item ``Output Weka'' do algoritmo:
+    \end{itemize}   
+
+
+\begin{Verbatim}[frame=single, fontsize=\tiny]
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -U -M 2
+Relation:     abordar.motorista
+Instances:    17
+Attributes:   5
+              UsandoTelefone
+              Luzes
+              Velocidade
+              Direcao
+              Abordar
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 unpruned tree
+------------------
+
+Luzes = Funcionando
+|   Direcao = Arriscada: Não (3.0)
+|   Direcao = Perigosa: Sim (3.0/1.0)
+|   Direcao = Segura: Não (4.0)
+Luzes = Queimadas: Sim (7.0)
+
+Number of Leaves  :     4
+
+Size of the tree :  6
+
+
+Time taken to build model: 0.01 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances          15               88.2353 %
+Incorrectly Classified Instances         2               11.7647 %
+Kappa statistic                          0.7639
+Mean absolute error                      0.1176
+Root mean squared error                  0.3237
+Relative absolute error                 23.3766 %
+Root relative squared error             64.2071 %
+Total Number of Instances               17     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,889    0,125    0,889      0,889    0,889      0,764    0,924     0,881     Sim
+                 0,875    0,111    0,875      0,875    0,875      0,764    0,924     0,918     Não
+Weighted Avg.    0,882    0,118    0,882      0,882    0,882      0,764    0,924     0,899     
+
+=== Confusion Matrix ===
+
+ a b   <-- classified as
+ 8 1 | a = Sim
+ 1 7 | b = Não
+\end{Verbatim}
+
+\begin{figure}[H]
+    \label{j48-decision-tree-2}
+    \caption{Árvore de decisão - J48}
+    \includegraphics[width=\textwidth]{imgs/exer3-j48-tree.pdf}
+\end{figure}
+
+% ----------------------------------------------------------
+% Questão 4
+% ----------------------------------------------------------
+\subsection*{\textbf{Exercício 4:}}
+\addcontentsline{toc}{subsection}{Exercício 4}
+
+\subsubsection*{\textbf{ID3:}}
+\addcontentsline{toc}{subsubsection}{ID3}
+
+\paragraph*{\textbf{Exemplo padrão:}}
+\addcontentsline{toc}{paragraph}{Exemplo padrão}
+
+\begin{Verbatim}[frame=single, fontsize=\tiny]
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.Id3 
+Relation:     exemplo.aula
+Instances:    14
+Attributes:   5
+              montante
+              idade
+              salário
+              conta
+              empréstimo
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Id3
+
+
+montante = baixo: sim
+montante = médio
+|  salário = baixo: não
+|  salário = alto: sim
+montante = alto
+|  conta = sim: sim
+|  conta = não: não
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances          12               85.7143 %
+Incorrectly Classified Instances         2               14.2857 %
+Kappa statistic                          0.6889
+Mean absolute error                      0.1429
+Root mean squared error                  0.378 
+Relative absolute error                 30      %
+Root relative squared error             76.6097 %
+Total Number of Instances               14     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,889    0,200    0,889      0,889    0,889      0,689    0,844     0,862     sim
+                 0,800    0,111    0,800      0,800    0,800      0,689    0,844     0,711     não
+Weighted Avg.    0,857    0,168    0,857      0,857    0,857      0,689    0,844     0,808     
+
+=== Confusion Matrix ===
+
+ a b   <-- classified as
+ 8 1 | a = sim
+ 1 4 | b = não
+ \end{Verbatim}
+
+
+\paragraph*{\textbf{Exemplo modificado 1:}}
+\addcontentsline{toc}{paragraph}{Exemplo modificado 1}
+
+\begin{Verbatim}[frame=single, fontsize=\tiny]
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.Id3 
+Relation:     exemplo.aula.modificado1
+Instances:    14
+Attributes:   5
+              montante
+              idade
+              salário
+              conta
+              empréstimo
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Id3
+
+
+montante = baixo: sim
+montante = médio
+|  salário = baixo: não
+|  salário = alto: sim
+montante = alto
+|  conta = sim: sim
+|  conta = não: não
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances          10               71.4286 %
+Incorrectly Classified Instances         4               28.5714 %
+Kappa statistic                          0.3778
+Mean absolute error                      0.2857
+Root mean squared error                  0.5345
+Relative absolute error                 60      %
+Root relative squared error            108.3425 %
+Total Number of Instances               14     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,778    0,400    0,778      0,778    0,778      0,378    0,689     0,748     sim
+                 0,600    0,222    0,600      0,600    0,600      0,378    0,689     0,503     não
+Weighted Avg.    0,714    0,337    0,714      0,714    0,714      0,378    0,689     0,660     
+
+=== Confusion Matrix ===
+
+ a b   <-- classified as
+ 7 2 | a = sim
+ 2 3 | b = não
+ \end{Verbatim}
+
+
+
+\paragraph*{\textbf{Exemplo modificado 2:}}
+\addcontentsline{toc}{paragraph}{Exemplo modificado 2}
+
+\begin{Verbatim}[frame=single, fontsize=\tiny]
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.Id3 
+Relation:     exemplo.aula.modificado2
+Instances:    14
+Attributes:   5
+              montante
+              idade
+              salário
+              conta
+              empréstimo
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Id3
+
+
+montante = baixo: sim
+montante = médio
+|  salário = baixo: não
+|  salário = alto: sim
+montante = alto
+|  conta = sim: sim
+|  conta = não: não
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances          11               78.5714 %
+Incorrectly Classified Instances         1                7.1429 %
+Kappa statistic                          0.8   
+Mean absolute error                      0.0833
+Root mean squared error                  0.2887
+Relative absolute error                 20.5882 %
+Root relative squared error             63.7922 %
+UnClassified Instances                   2               14.2857 %
+Total Number of Instances               14     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 1,000    0,250    0,889      1,000    0,941      0,816    0,844     0,862     sim
+                 0,750    0,000    1,000      0,750    0,857      0,816    0,800     0,743     não
+Weighted Avg.    0,917    0,167    0,926      0,917    0,913      0,816    0,830     0,822     
+
+=== Confusion Matrix ===
+
+ a b   <-- classified as
+ 8 0 | a = sim
+ 1 3 | b = não
+\end{Verbatim}
+
+
+\subsubsection*{\textbf{J48 - Unpruned:}}
+\addcontentsline{toc}{subsubsection}{J48 - Unpruned}
+
+\paragraph*{\textbf{Exemplo padrão:}}
+\addcontentsline{toc}{paragraph}{Exemplo padrão}
+
+\begin{Verbatim}[frame=single, fontsize=\tiny]
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -U -M 2
+Relation:     exemplo.aula
+Instances:    14
+Attributes:   5
+              montante
+              idade
+              salário
+              conta
+              empréstimo
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 unpruned tree
+------------------
+
+montante = baixo: sim (4.0)
+montante = médio
+|   salário = baixo: não (3.0)
+|   salário = alto: sim (2.0)
+montante = alto
+|   conta = sim: sim (3.0)
+|   conta = não: não (2.0)
+
+Number of Leaves  :     5
+
+Size of the tree :  8
+
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances           8               57.1429 %
+Incorrectly Classified Instances         6               42.8571 %
+Kappa statistic                          0.0667
+Mean absolute error                      0.369 
+Root mean squared error                  0.5713
+Relative absolute error                 77.5    %
+Root relative squared error            115.7978 %
+Total Number of Instances               14     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,667    0,600    0,667      0,667    0,667      0,067    0,689     0,792     sim
+                 0,400    0,333    0,400      0,400    0,400      0,067    0,689     0,486     não
+Weighted Avg.    0,571    0,505    0,571      0,571    0,571      0,067    0,689     0,683     
+
+=== Confusion Matrix ===
+
+ a b   <-- classified as
+ 6 3 | a = sim
+ 3 2 | b = não
+ \end{Verbatim}
+
+\paragraph*{\textbf{Exemplo modificado 1:}}
+\addcontentsline{toc}{paragraph}{Exemplo modificado 1}
+
+\begin{Verbatim}[frame=single, fontsize=\tiny]
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -U -M 2
+Relation:     exemplo.aula.modificado1
+Instances:    14
+Attributes:   5
+              montante
+              idade
+              salário
+              conta
+              empréstimo
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 unpruned tree
+------------------
+
+montante = baixo: sim (4.0)
+montante = médio
+|   salário = baixo: não (3.0)
+|   salário = alto: sim (2.0)
+montante = alto
+|   conta = sim: sim (3.0)
+|   conta = não: não (2.0)
+
+Number of Leaves  :     5
+
+Size of the tree :  8
+
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances           8               57.1429 %
+Incorrectly Classified Instances         6               42.8571 %
+Kappa statistic                          0.1429
+Mean absolute error                      0.375 
+Root mean squared error                  0.5586
+Relative absolute error                 78.75   %
+Root relative squared error            113.2173 %
+Total Number of Instances               14     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,556    0,400    0,714      0,556    0,625      0,149    0,644     0,758     sim
+                 0,600    0,444    0,429      0,600    0,500      0,149    0,644     0,457     não
+Weighted Avg.    0,571    0,416    0,612      0,571    0,580      0,149    0,644     0,650     
+
+=== Confusion Matrix ===
+
+ a b   <-- classified as
+ 5 4 | a = sim
+ 2 3 | b = não
+\end{Verbatim}
+
+\paragraph*{\textbf{Exemplo modificado 2:}}
+\addcontentsline{toc}{paragraph}{Exemplo modificado 2}
+
+\begin{Verbatim}[frame=single, fontsize=\tiny]
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -U -M 2
+Relation:     exemplo.aula.modificado2
+Instances:    14
+Attributes:   5
+              montante
+              idade
+              salário
+              conta
+              empréstimo
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 unpruned tree
+------------------
+
+montante = baixo: sim (4.0)
+montante = médio
+|   salário = baixo: não (3.0)
+|   salário = alto: sim (2.0)
+montante = alto
+|   conta = sim: sim (3.0)
+|   conta = não: não (2.0)
+
+Number of Leaves  :     5
+
+Size of the tree :  8
+
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances           9               64.2857 %
+Incorrectly Classified Instances         5               35.7143 %
+Kappa statistic                          0.2553
+Mean absolute error                      0.3214
+Root mean squared error                  0.5127
+Relative absolute error                 67.5    %
+Root relative squared error            103.9263 %
+Total Number of Instances               14     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,667    0,400    0,750      0,667    0,706      0,258    0,722     0,801     sim
+                 0,600    0,333    0,500      0,600    0,545      0,258    0,722     0,552     não
+Weighted Avg.    0,643    0,376    0,661      0,643    0,649      0,258    0,722     0,712     
+
+=== Confusion Matrix ===
+
+ a b   <-- classified as
+ 6 3 | a = sim
+ 2 3 | b = não
+\end{Verbatim}
 
 
 % Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
