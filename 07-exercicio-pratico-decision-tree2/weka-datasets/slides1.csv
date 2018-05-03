@@ -1,0 +1,15 @@
+tempo,temperatura,umidade,vento,jogar
+nublado,64,65,sim,sim
+chuva,65,70,sim,não
+chuva,68,80,não,sim
+sol,69,70,não,sim
+chuva,70,96,não,sim
+chuva,71,91,sim,não
+sol,72,95,não,não
+nublado,72,90,sim,sim
+chuva,75,80,não,sim
+sol,75,70,sim,sim
+sol,80,90,sim,não
+nublado,81,75,não,sim
+nublado,83,86,não,sim
+sol,85,85,não,não

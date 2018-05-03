@@ -71,6 +71,8 @@
 \usepackage{todonotes}
 \usepackage{float}
 \usepackage{listings}
+\usepackage{amsmath}
+\usepackage{cancel}
 % ---
         
 % ---
@@ -202,11 +204,81 @@
 \section*{\textbf{Respostas:}}
 \addcontentsline{toc}{section}{Respostas}
 
+
+
+\section*{\textbf{Exercício slide 1}}
+\addcontentsline{toc}{section}{Exercício slide 1}
+
+\begin{table}[H]
+\centering
+\caption{Praticar ou não praticar esportes?}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{tempo} & \textbf{temperatura} & \textbf{umidade} & \textbf{vento} & \textbf{jogar} \\ \hline
+nublado        & 64                   & 65               & sim            & sim            \\ \hline
+chuva          & 65                   & 70               & sim            & não            \\ \hline
+chuva          & 68                   & 80               & não            & sim            \\ \hline
+sol            & 69                   & 70               & não            & sim            \\ \hline
+chuva          & 70                   & 96               & não            & sim            \\ \hline
+chuva          & 71                   & 91               & sim            & não            \\ \hline
+sol            & 72                   & 95               & não            & não            \\ \hline
+nublado        & 72                   & 90               & sim            & sim            \\ \hline
+chuva          & 75                   & 80               & não            & sim            \\ \hline
+sol            & 75                   & 70               & sim            & sim            \\ \hline
+sol            & 80                   & 90               & sim            & não            \\ \hline
+nublado        & 81                   & 75               & não            & sim            \\ \hline
+nublado        & 83                   & 86               & não            & sim            \\ \hline
+sol            & 85                   & 85               & não            & não            \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imgs/slides1-tree.pdf}
+\end{figure}
+
+Comparando a árvore acima (gerada no weka), com a presente nos slides constata-se que ambas são iguais.
+
+\section*{\textbf{Exercício slide 2}}
+\addcontentsline{toc}{section}{Exercício slide 2}
+
+\begin{table}[H]
+\centering
+\caption{Exercício slide}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+Peso & Idade & Sexo & Classe  \\ \hline
+35 & criança & Fem & 1  \\ \hline
+50 & criança & Masc & 1  \\ \hline
+60 & adulto & Fem & 1  \\ \hline
+70 & jovem & Masc & 2  \\ \hline
+75 & jovem & Masc & 2  \\ \hline
+80 & adulto & Masc & 2  \\ \hline
+85 & adulto & Masc & 2  \\ \hline
+\end{tabular}
+\end{table}
+
+Através da ordenação é possível ver a presença de 1 limiar de valor \textbf{65}.
+
+\begin{align*}
+Entropia(S) &= - (\tfrac{3}{7} \times \log_2 \tfrac{3}{7}) - (\tfrac{4}{7} \times \log_2 \tfrac{4}{7})   \\ 
+            &= - (0.43 \times \log_2 0.43) - (0.57 \times \log_2 0.57)                                   \\
+            &= 0.986                                                                                   \\\\
+Entropia(Peso='<65) &= - (\tfrac{3}{3} \times \log_2 \tfrac{3}{3}) - (\tfrac{0}{3} \times \log_2 \tfrac{0}{3}) \\ 
+              &= - (1 \times \log_2 1) - \cancel{(0 \times \log_2 \tfrac{0}{2})}                         \\
+              &= - (1 \times 0)                                                                          \\
+              &= 0                                                                                     \\\\      
+\end{align*}
+
 % ----------------------------------------------------------
 % Questão a
 % ----------------------------------------------------------
 \section*{\textbf{a) Qual o objetivo de se executar poda (\textit{prunning}) em árvores de decisão?}}
 \addcontentsline{toc}{section}{a) Qual o objetivo de se executar poda (\textit{prunning}) em árvores de decisão?}
+
+Existem dois objetivos principais, maximizar o desempenho da árvore de decisão em questão sem perder seu poder de decisão e reduzir seu tamanho físico, ou seja, tornar a árvore de decisão mais leve, irá ocupar menos espaço em disco.
 
 % ----------------------------------------------------------
 % Questão b
