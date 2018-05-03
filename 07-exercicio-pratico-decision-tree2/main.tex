@@ -1,0 +1,251 @@
+%% abtex2-modelo-artigo.tex, v-1.9.6 laurocesar
+%% Copyright 2012-2016 by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-artigo.tex and
+%% abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Artigo Acadêmico em conformidade com
+% ABNT NBR 6022:2003: Informação e documentação - Artigo em publicação 
+% periódica científica impressa - Apresentação
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+    % -- opções da classe memoir --
+    article,            % indica que é um artigo acadêmico
+    11pt,               % tamanho da fonte
+    oneside,            % para impressão apenas no recto. Oposto a twoside
+    a4paper,            % tamanho do papel. 
+    % -- opções da classe abntex2 --
+    %chapter=TITLE,     % títulos de capítulos convertidos em letras maiúsculas
+    %section=TITLE,     % títulos de seções convertidos em letras maiúsculas
+    %subsection=TITLE,  % títulos de subseções convertidos em letras maiúsculas
+    %subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
+    % -- opções do pacote babel --
+    english,            % idioma adicional para hifenização
+    brazil,             % o último idioma é o principal do documento
+    sumario=tradicional,
+    ]{abntex2}
+
+
+% ---
+% PACOTES
+% ---
+\usepackage[table,xcdraw]{xcolor}
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{lmodern}            % Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}        % Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}     % Codificacao do documento (conversão automática dos acentos)
+% \usepackage{indentfirst}        % Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl}            % Lista de simbolos
+\usepackage{color}              % Controle das cores
+\usepackage{graphicx}           % Inclusão de gráficos
+\usepackage{microtype}          % para melhorias de justificação
+% ---
+        
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}             % para geração de dummy text
+\usepackage{fancyvrb}
+\usepackage{todonotes}
+\usepackage{float}
+\usepackage{listings}
+% ---
+        
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}     % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}   % Citações padrão ABNT
+% ---
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+    \ifcase #1 %
+        Nenhuma citação no texto.%
+    \or
+        Citado na página #2.%
+    \else
+        Citado #1 vezes nas páginas #2.%
+    \fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{INE5644 - Data Mining\\ 
+        Exercício - Árvore de decisão - Parte 2}
+\autor{Bruno Marques do Nascimento\thanks{brunomn95@gmail.com \hspace{1mm} - \hspace{1mm} Universidade Federal de Santa Catarina}}
+\instituicao{Universidade Federal de Santa Catarina}
+\local{Florianópolis - SC, Brasil}
+\data{30 de Abril de 2018}
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+        %pagebackref=true,
+        pdftitle={\@title}, 
+        pdfauthor={\@author},
+        pdfsubject={Modelo de artigo científico com abnTeX2},
+        pdfcreator={LaTeX with abnTeX2},
+        pdfkeywords={abnt}{latex}{abntex}{abntex2}{atigo científico}, 
+        colorlinks=true,            % false: boxed links; true: colored links
+        linkcolor=blue,             % color of internal links
+        citecolor=blue,             % color of links to bibliography
+        filecolor=magenta,              % color of file links
+        urlcolor=blue,
+        bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ---
+% Altera as margens padrões
+% ---
+\setlrmarginsandblock{3cm}{3cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+% ---
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% Espaçamento simples
+\SingleSpacing
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+
+%---
+%
+% Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
+% e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
+% \twocolumn[           % INICIO DE ARTIGO EM DUAS COLUNAS
+%
+%---
+% página de titulo
+
+\maketitle
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ----------------------------------------------------------
+% Introdução
+% ----------------------------------------------------------
+% \section*{Introdução}
+% \addcontentsline{toc}{section}{Introdução}
+
+\section*{\textbf{Respostas:}}
+\addcontentsline{toc}{section}{Respostas}
+
+% ----------------------------------------------------------
+% Questão a
+% ----------------------------------------------------------
+\section*{\textbf{a) Qual o objetivo de se executar poda (\textit{prunning}) em árvores de decisão?}}
+\addcontentsline{toc}{section}{a) Qual o objetivo de se executar poda (\textit{prunning}) em árvores de decisão?}
+
+% ----------------------------------------------------------
+% Questão b
+% ----------------------------------------------------------
+\section*{\textbf{b) Quais tipos de poda (\textit{prunning}) estão previstos na literatura?}}
+\addcontentsline{toc}{section}{b) Quais tipos de poda (\textit{prunning}) estão previstos na literatura?}
+
+Na literatura encontram-se presentes podas com abordagem \textit{top-down} e \textit{bottom-up}.  
+
+% ----------------------------------------------------------
+% Questão c
+% ----------------------------------------------------------
+\section*{\textbf{c) Para o dataset de exemplo, qual o impacto da poda (\textit{prunning}) nas árvores resultado? Quais são as diferenças perceptíveis entre as árvores geradas?}}
+\addcontentsline{toc}{section}{c) Para o dataset de exemplo, qual o impacto da poda (prunning) nas árvores resultado? Quais são as diferenças perceptíveis entre as árvores geradas?}
+
+
+% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+% ---
+\bookmarksetup{startatroot}% 
+% ---
+
+% ---
+% Conclusão
+% ---
+% \section*{Considerações finais}
+% \addcontentsline{toc}{section}{Considerações finais}
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\newpage
+\nocite{material_aula}
+\nocite{enunciado_aula}
+\nocite{Witten:2016:DMF:3086818}
+\bibliography{bibliography}
+
+\end{document}
