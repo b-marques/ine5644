@@ -107,7 +107,7 @@
 \autor{Bruno Marques do Nascimento\thanks{brunomn95@gmail.com \hspace{1mm} - \hspace{1mm} Universidade Federal de Santa Catarina}}
 \instituicao{Universidade Federal de Santa Catarina}
 \local{Florianópolis - SC, Brasil}
-\data{30 de Abril de 2018}
+\data{04 de Maio de 2018}
 % ---
 
 % ---
@@ -126,10 +126,10 @@
         pdfcreator={LaTeX with abnTeX2},
         pdfkeywords={abnt}{latex}{abntex}{abntex2}{atigo científico}, 
         colorlinks=true,            % false: boxed links; true: colored links
-        linkcolor=blue,             % color of internal links
-        citecolor=blue,             % color of links to bibliography
+        linkcolor=black,             % color of internal links
+        citecolor=black,             % color of links to bibliography
         filecolor=magenta,              % color of file links
-        urlcolor=blue,
+        urlcolor=black,
         bookmarksdepth=4
 }
 \makeatother
@@ -260,17 +260,62 @@ Peso & Idade & Sexo & Classe  \\ \hline
 \end{tabular}
 \end{table}
 
-Através da ordenação é possível ver a presença de 1 limiar de valor \textbf{65}.
+Através da ordenação é possível ver a presença de 1 limiar de valor \textbf{65}, gerando assim dois intervalos de decisão, os de \texttt{Peso $<$ 65} e \texttt{Peso $\ge$ 65}.
 
 \begin{align*}
 Entropia(S) &= - (\tfrac{3}{7} \times \log_2 \tfrac{3}{7}) - (\tfrac{4}{7} \times \log_2 \tfrac{4}{7})   \\ 
             &= - (0.43 \times \log_2 0.43) - (0.57 \times \log_2 0.57)                                   \\
             &= 0.986                                                                                   \\\\
-Entropia(Peso='<65) &= - (\tfrac{3}{3} \times \log_2 \tfrac{3}{3}) - (\tfrac{0}{3} \times \log_2 \tfrac{0}{3}) \\ 
-              &= - (1 \times \log_2 1) - \cancel{(0 \times \log_2 \tfrac{0}{2})}                         \\
-              &= - (1 \times 0)                                                                          \\
-              &= 0                                                                                     \\\\      
+Entropia(Peso <65) &= - (\tfrac{3}{3} \times \log_2 \tfrac{3}{3}) - (\tfrac{0}{3} \times \log_2 \tfrac{0}{3}) \\ 
+            &= - (1 \times \log_2 1) - \cancel{(0 \times \log_2 \tfrac{0}{2})}                         \\
+            &= - (1 \times 0)                                                                          \\
+            &= 0                                                                                     \\\\      
 \end{align*}
+\begin{align*}             
+Entropia(Peso \ge65) &= - (\tfrac{0}{4} \times \log_2 \tfrac{0}{4}) - (\tfrac{4}{4} \times \log_2 \tfrac{4}{4}) \\ 
+            &= - \cancel{(0 \times \log_2 \tfrac{0}{2})} - (1 \times \log_2 1)                         \\
+            &= - (1 \times 0)                                                                          \\
+            &= 0                                                                                     \\
+Entropia(Idade = crianca) &= - (\tfrac{2}{2} \times \log_2 \tfrac{2}{2}) - (\tfrac{0}{2} \times \log_2 \tfrac{0}{2}) \\ 
+            &= - (1 \times \log_2 1) - \cancel{(0 \times \log_2 \tfrac{0}{2})}                         \\
+            &= - (1 \times 0)                                                                          \\
+            &= 0                                                                                     \\\\
+Entropia(Idade = jovem) &= - (\tfrac{0}{2} \times \log_2 \tfrac{0}{2}) - (\tfrac{2}{2} \times \log_2 \tfrac{2}{2}) \\ 
+            &= - \cancel{(0 \times \log_2 \tfrac{0}{2})} - (1 \times \log_2 1)                         \\
+            &= - (1 \times 0)                                                                          \\
+            &= 0                                                                                     \\\\
+Entropia(Idade=adulto) &= - (\tfrac{1}{3} \times \log_2 \tfrac{1}{3}) - (\tfrac{2}{3} \times \log_2 \tfrac{2}{3}) \\ 
+            &= - (0.333 \times \log_2 0.333) - (0.667 \times \log_2 0.667)                             \\
+            &= - (0.333 \times -1.585) - (0.667 \times -0.585)                                         \\
+            &= 0.918                                                                                 \\\\
+Entropia(Sexo=Masc) &= - (\tfrac{1}{5} \times \log_2 \tfrac{1}{5}) - (\tfrac{4}{5} \times \log_2 \tfrac{4}{5}) \\ 
+            &= - (0.2 \times \log_2 0.2) - (0.8 \times \log_2 0.8)                             \\
+            &= - (0.2 \times -2.32) - (0.8 \times -0.322)                                         \\
+            &= 0.722                                                                                  \\\\
+Entropia(Sexo = Fem) &= - (\tfrac{2}{2} \times \log_2 \tfrac{2}{2}) - (\tfrac{0}{2} \times \log_2 \tfrac{0}{2}) \\ 
+            &= - (1 \times \log_2 1) - \cancel{(0 \times \log_2 \tfrac{0}{2})}                         \\
+            &= - (1 \times 0)                                                                          \\
+            &= 0      \\\\                                                                               
+Ganho(S, Peso)  &= 0.986 - ((\tfrac{3}{7}) \times 0) + (\tfrac{4}{7}) \times 0))      \\ 
+                &= 0.986                                                            \\\\
+Ganho(S, Idade) &= 0.986 - ((\tfrac{2}{7}) \times 0) + (\tfrac{2}{7}) \times 0) + (\tfrac{3}{7}) \times 0.918))      \\ 
+                &= 0.986 - 0.393 \\
+                &= 0.593           \\\\                                                
+Ganho(S, Sexo)  &= 0.986 - ((\tfrac{5}{7}) \times 0.722) + (\tfrac{2}{7}) \times 0))  \\
+                &= 0.986 - 0.516 \\
+                &= 0.47
+\end{align*}
+
+Com os ganhos calculados, gera-se a árvore.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{imgs/slides2-tree.pdf}
+\end{figure}
+
+
+\section*{\textbf{Exercício folha}}
+\addcontentsline{toc}{section}{Exercício folha}
 
 % ----------------------------------------------------------
 % Questão a
@@ -278,7 +323,7 @@ Entropia(Peso='<65) &= - (\tfrac{3}{3} \times \log_2 \tfrac{3}{3}) - (\tfrac{0}{
 \section*{\textbf{a) Qual o objetivo de se executar poda (\textit{prunning}) em árvores de decisão?}}
 \addcontentsline{toc}{section}{a) Qual o objetivo de se executar poda (\textit{prunning}) em árvores de decisão?}
 
-Existem dois objetivos principais, maximizar o desempenho da árvore de decisão em questão sem perder seu poder de decisão e reduzir seu tamanho físico, ou seja, tornar a árvore de decisão mais leve, irá ocupar menos espaço em disco.
+Existem dois objetivos principais, maximizar o desempenho da árvore de decisão em questão sem perder seu poder de decisão e reduzir seu tamanho físico, ou seja, tornar a árvore de decisão mais leve, irá ocupar menos espaço em disco. Um outro objetivo é evitar que os erros e ruídos presentes em ramificações muitos específicas da árvore atrapalhe na decisão tomada.
 
 % ----------------------------------------------------------
 % Questão b
@@ -286,13 +331,22 @@ Existem dois objetivos principais, maximizar o desempenho da árvore de decisão
 \section*{\textbf{b) Quais tipos de poda (\textit{prunning}) estão previstos na literatura?}}
 \addcontentsline{toc}{section}{b) Quais tipos de poda (\textit{prunning}) estão previstos na literatura?}
 
-Na literatura encontram-se presentes podas com abordagem \textit{top-down} e \textit{bottom-up}.  
+Na literatura encontram-se diversos tipo de poda para árvore de decisão. Eles estão classificados em dois grandes grupos, os métodos \texttt{pré-poda} e \texttt{pós-poda}. Os métodos pré-poda são realizado durante a construção da árvore de decisão, ou seja, na sua construção um nodo pode parar de ser ramificado e transformado em nodo folha se os critérios para isto forem satisfeito. Já a pós-poda acontece após a construção completa da árvore, aonde a ramificação abaixo de um nodo é removida e este nodo passa a ser um nodo folha, representando a classe de maior representatividade na ramificação removida. Alguns métodos conhecidos que se destacam, são: \textit{Cost Complexity Pruning}, \textit{Reduced Error Pruning}, \textit{Minimum Error Pruning (MEP)}, \textit{Pessimistic Pruning}, \textit{ErrorBased Pruning (EBP)}, \textit{Minimum Description Length (MDL) Pruning}, \textit{Mininum Message Length (MML) Pruning}, \textit{Critical Value Pruning (CVP)}, \textit{OPT} e \textit{OPT-2}, conforme \citeonline{decision-tree-unicamp}.  
 
 % ----------------------------------------------------------
 % Questão c
 % ----------------------------------------------------------
-\section*{\textbf{c) Para o dataset de exemplo, qual o impacto da poda (\textit{prunning}) nas árvores resultado? Quais são as diferenças perceptíveis entre as árvores geradas?}}
+\section*{\textbf{c) Para o \textit{dataset} de exemplo, qual o impacto da poda (\textit{prunning}) nas árvores resultado? Quais são as diferenças perceptíveis entre as árvores geradas?}}
 \addcontentsline{toc}{section}{c) Para o dataset de exemplo, qual o impacto da poda (prunning) nas árvores resultado? Quais são as diferenças perceptíveis entre as árvores geradas?}
+
+O impacto gerado pela poda foi extremamente significativo, a árvore gerada com o algoritmo sem utilizar poda tinha um tamanho de 7976 nodos com 6812 nodos folha, após a utilização do algoritmo a árvore passou a ter um tamanho de 710 com 564 nodos folha, uma redução no tamanho da árvore e na quantidade de nodos folha de 91\%. A principal diferença percebida, é a ausência de ramificações existentes a partir de certos nodo, que é exatamente o que a poda realiza. Na \autoref{captura-tela}, podemos observar de maneira clara a poda que acontece no nodo \texttt{\textit{capital-gain $\le$ 3942}}.
+
+\begin{figure}[H]
+    \caption{Captura de tela}
+    \label{captura-tela}
+    \centering
+    \includegraphics[width=\textwidth]{imgs/unpruned-vs-pruned.pdf}
+\end{figure}
 
 
 % Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
